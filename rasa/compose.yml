@@ -1,0 +1,52 @@
+name: ypo-rasa
+services:
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    networks:
+      - rasa_network
+
+
+  rasa:
+    container_name: rasa
+    build:
+      context: ./rasa
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    ports:
+      - "5006:5005"
+    networks:
+      - rasa_network
+
+#  rasa-sdk:
+#    container_name: rasa-sdk
+#    build:
+#      context: ./rasa-sdk
+#      dockerfile: Dockerfile
+#    environment:
+#      SANIC_HOST: rasa
+#    restart: on-failure
+#    ports:
+#      - "5055:5055"
+#    networks:
+#      - rasa_network
+
+  rasa-sdk:
+    image: rasa/rasa-sdk:3.6.2
+    container_name: rasa-sdk
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./rasa-sdk/actions:/app/actions
+    networks:
+      - rasa_network
+
+networks:
+  rasa_network:
+    driver: bridge
