@@ -30,10 +30,10 @@ rules:
       - intent: микросервисы
       - action: action_microservice_info
 
-  - rule: Монолитная архитектура
-    steps:
-      - intent: монолит
-      - action: action_monolith_info
+#  - rule: Монолитная архитектура
+#    steps:
+#      - intent: монолит
+#      - action: action_monolith_info
 
   - rule: Интеграция систем
     steps:

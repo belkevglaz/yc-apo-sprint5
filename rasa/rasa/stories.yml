@@ -25,7 +25,10 @@ stories:
   - story: Монолитная архитектура
     steps:
       - intent: монолит
+      - action: utter_monolith
       - action: action_monolith_info
+      - intent: монолит_детали
+      - action: utter_monolith_detail
 
   - story: Интеграция систем
     steps:
