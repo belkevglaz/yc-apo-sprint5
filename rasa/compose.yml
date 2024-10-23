@@ -24,18 +24,6 @@ services:
     networks:
       - rasa_network
 
-#  rasa-sdk:
-#    container_name: rasa-sdk
-#    build:
-#      context: ./rasa-sdk
-#      dockerfile: Dockerfile
-#    environment:
-#      SANIC_HOST: rasa
-#    restart: on-failure
-#    ports:
-#      - "5055:5055"
-#    networks:
-#      - rasa_network
 
   rasa-sdk:
     image: rasa/rasa-sdk:3.6.2
